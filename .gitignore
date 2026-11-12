@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Données brutes et résultats locaux
+/data/raw/*/**
+!/data/raw/*/
+!/data/raw/*/.gitkeep
+/data/interim/*
+/data/processed/*
+/models/*
+/reports/generated/
+
+# Secrets et fichiers système
+.env
+.DS_Store
+.Rhistory
+__MACOSX/
+Thumbs.db
