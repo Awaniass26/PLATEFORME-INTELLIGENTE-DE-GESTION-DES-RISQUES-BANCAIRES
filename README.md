@@ -29,7 +29,6 @@ fusionnés artificiellement.
 | Credit Card Fraud Detection | Détection de fraude et étude du déséquilibre | [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) | Présent : `creditcard.csv` |
 | Lending Club Loan Data | Défaut et remboursement des prêts, estimation des pertes | [Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club) | Présent : CSV `accepted` et `rejected` |
 | Bank Marketing | Souscription à un produit bancaire et comportement client | [UCI, dataset 222](https://archive.ics.uci.edu/dataset/222/bank+marketing) | Présent : variantes `bank` et `bank-additional` |
-| Credit Card Fraud Detection | Détection de fraude et étude du déséquilibre | [Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) | À récupérer ; aucun fichier trouvé |
 
 Les données sont stockées localement dans `data/raw/` et exclues de Git. Les
 tables secondaires Home Credit et les CSV Lending Club sont volumineux ; les
@@ -39,9 +38,11 @@ leurs licences ; le dépôt public ne contient que le code et la documentation.
 
 L'inventaire détaillé et les premiers constats sont dans
 [`docs/inventaire-donnees.md`](docs/inventaire-donnees.md) et
-[`docs/observations-initiales.md`](docs/observations-initiales.md). Le notebook
-[`notebooks/01_inventaire_initial.ipynb`](notebooks/01_inventaire_initial.ipynb)
-exécute les premiers `info()` et `describe()`.
+[`docs/observations-initiales.md`](docs/observations-initiales.md). Les notebooks
+[`01_inventaire_initial.ipynb`](notebooks/01_inventaire_initial.ipynb) et
+[`02_eda_home_credit.ipynb`](notebooks/02_eda_home_credit.ipynb) couvrent
+l'inventaire et l'analyse approfondie prioritaire de Home Credit ; le rapport
+de qualité est dans [`docs/rapport-qualite-home-credit.md`](docs/rapport-qualite-home-credit.md).
 
 ## Architecture
 
@@ -72,15 +73,17 @@ exécute les premiers `info()` et `describe()`.
 
 ## Feuille de route
 
-1. **Cadrage et inventaire :** documenter les sources, vérifier les fichiers,
-   puis produire les premiers `DataFrame.info()` et `DataFrame.describe()`.
-2. **EDA et qualité :** commencer par Home Credit ; analyser valeurs manquantes,
-   distributions, valeurs extrêmes, corrélations et déséquilibre des classes.
-3. **Prétraitement :** créer des pipelines scikit-learn reproductibles et
-   anti-fuite ; agréger les tables secondaires Home Credit.
-4. **Scoring :** comparer une régression logistique, une Random Forest et, si
-   disponible dans l'environnement, XGBoost/LightGBM avec ROC-AUC, PR-AUC,
-   rappel et matrice de confusion.
+1. **Cadrage et inventaire — terminé :** sources, fichiers, premiers
+   `DataFrame.info()` et `DataFrame.describe()`.
+2. **EDA Home Credit — première analyse terminée :** qualité, valeurs
+   manquantes, distributions, valeurs extrêmes, corrélations, tests
+   statistiques et nettoyage du code sentinelle. Étendre ensuite l'EDA aux
+   autres jeux.
+3. **À venir — prétraitement :** créer des pipelines scikit-learn
+   reproductibles et anti-fuite ; agréger les tables secondaires Home Credit.
+4. **À venir — scoring :** comparer une régression logistique, une Random
+   Forest et, si disponible dans l'environnement, XGBoost/LightGBM avec
+   ROC-AUC, PR-AUC, rappel et matrice de confusion.
 
 ## Démarrage
 
