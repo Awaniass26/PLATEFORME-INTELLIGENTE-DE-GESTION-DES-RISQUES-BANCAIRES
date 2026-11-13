@@ -41,8 +41,16 @@ L'inventaire détaillé et les premiers constats sont dans
 [`docs/observations-initiales.md`](docs/observations-initiales.md). Les notebooks
 [`01_inventaire_initial.ipynb`](notebooks/01_inventaire_initial.ipynb) et
 [`02_eda_home_credit.ipynb`](notebooks/02_eda_home_credit.ipynb) couvrent
-l'inventaire et l'analyse approfondie prioritaire de Home Credit ; le rapport
-de qualité est dans [`docs/rapport-qualite-home-credit.md`](docs/rapport-qualite-home-credit.md).
+l'inventaire et l'analyse approfondie prioritaire de Home Credit. Le notebook
+[`03_feature_engineering_modelisation.ipynb`](notebooks/03_feature_engineering_modelisation.ipynb)
+réalise les agrégations multi-tables et compare des modèles de crédit.
+[`04_detection_fraude.ipynb`](notebooks/04_detection_fraude.ipynb) compare les
+modèles fraude, le suréchantillonnage et les seuils sensibles aux coûts.
+
+Les rapports détaillés sont dans
+[`docs/rapport-qualite-home-credit.md`](docs/rapport-qualite-home-credit.md) et
+[`docs/rapport-modeles-home-credit.md`](docs/rapport-modeles-home-credit.md)
+ainsi que [`docs/rapport-detection-fraude.md`](docs/rapport-detection-fraude.md).
 
 ## Architecture
 
@@ -79,11 +87,18 @@ de qualité est dans [`docs/rapport-qualite-home-credit.md`](docs/rapport-qualit
    manquantes, distributions, valeurs extrêmes, corrélations, tests
    statistiques et nettoyage du code sentinelle. Étendre ensuite l'EDA aux
    autres jeux.
-3. **À venir — prétraitement :** créer des pipelines scikit-learn
-   reproductibles et anti-fuite ; agréger les tables secondaires Home Credit.
-4. **À venir — scoring :** comparer une régression logistique, une Random
-   Forest et, si disponible dans l'environnement, XGBoost/LightGBM avec
-   ROC-AUC, PR-AUC, rappel et matrice de confusion.
+3. **Home Credit — implémenté :** agrégations historiques
+   pour `bureau`, `previous_application` et `installments_payments` ;
+   prétraitement scikit-learn ajusté dans les pipelines après le découpage
+   train/validation ; comparaison logistique, Random Forest et XGBoost dans le
+   notebook `03`. XGBoost obtient une PR-AUC/AP de 0,2792 sur ce split.
+4. **Fraude — implémenté :** comparaison logistique pondérée, logistique +
+   SMOTE, Random Forest pondérée et XGBoost pondéré ; choix d'un seuil sur la
+   validation à partir de scénarios de coûts, puis mesure sur un test temporel
+   final. Les métriques mesurées et les réserves sont dans le rapport fraude.
+
+La revue des coûts de fraude reste à confirmer avec les responsables métier :
+les ratios fournis dans le notebook sont des scénarios illustratifs.
 
 ## Démarrage
 
