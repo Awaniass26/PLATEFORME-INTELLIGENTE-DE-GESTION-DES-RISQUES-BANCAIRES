@@ -46,11 +46,14 @@ l'inventaire et l'analyse approfondie prioritaire de Home Credit. Le notebook
 réalise les agrégations multi-tables et compare des modèles de crédit.
 [`04_detection_fraude.ipynb`](notebooks/04_detection_fraude.ipynb) compare les
 modèles fraude, le suréchantillonnage et les seuils sensibles aux coûts.
+[`05_eda_uci_bank_marketing.ipynb`](notebooks/05_eda_uci_bank_marketing.ipynb)
+explore les deux autres jeux UCI.
 
 Les rapports détaillés sont dans
 [`docs/rapport-qualite-home-credit.md`](docs/rapport-qualite-home-credit.md) et
 [`docs/rapport-modeles-home-credit.md`](docs/rapport-modeles-home-credit.md)
-ainsi que [`docs/rapport-detection-fraude.md`](docs/rapport-detection-fraude.md).
+ainsi que [`docs/rapport-detection-fraude.md`](docs/rapport-detection-fraude.md)
+et [`docs/rapport-eda-uci-bank-marketing.md`](docs/rapport-eda-uci-bank-marketing.md).
 
 ## Architecture
 
@@ -96,6 +99,9 @@ ainsi que [`docs/rapport-detection-fraude.md`](docs/rapport-detection-fraude.md)
    SMOTE, Random Forest pondérée et XGBoost pondéré ; choix d'un seuil sur la
    validation à partir de scénarios de coûts, puis mesure sur un test temporel
    final. Les métriques mesurées et les réserves sont dans le rapport fraude.
+5. **EDA UCI Credit Card et Bank Marketing — terminée :** contrôles qualité,
+   tests statistiques exploratoires, analyse des codes inconnus et repérage de
+   la fuite de cible `duration`.
 
 La revue des coûts de fraude reste à confirmer avec les responsables métier :
 les ratios fournis dans le notebook sont des scénarios illustratifs.
